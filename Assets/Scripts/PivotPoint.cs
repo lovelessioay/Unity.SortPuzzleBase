@@ -6,10 +6,16 @@ using UnityEngine;
 public class PivotPoint : MonoBehaviour
 {
     [SerializeField] private BallController prefab;
-    [SerializeField, AllowNull] private BallController ballController = null;
+    [SerializeField, AllowNull] private BallController ballController;
 
     private static int colbs = 0;
     private static int[] colors;
+
+    public static void Clear()
+    {
+        colbs = 0;
+        colors = null;
+    }
 
     public void FillPivotPoint()
     {
@@ -27,11 +33,10 @@ public class PivotPoint : MonoBehaviour
 
             // Add loop check! Or maybe not, don't give af
         }
-        if (!ballController)
+        if (ballController == null)
         {
-            ballController = Instantiate(prefab, transform.position, Quaternion.identity);
+            Ball = Instantiate(prefab, transform.position, Quaternion.identity);
         }
-        ballController.Point = this;
         ballController.ColorID = randomColorId;
         colors[randomColorId]++;
     }

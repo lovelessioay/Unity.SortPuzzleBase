@@ -73,4 +73,12 @@ public class ColbController : MonoBehaviour
             BallController.Selected = points[0].Ball;
         }
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            BallController.Selected = null;
+        }
+    }
 }

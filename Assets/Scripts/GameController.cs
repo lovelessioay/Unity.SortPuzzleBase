@@ -11,10 +11,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private string nextLevel;
     [SerializeField] private ColbController[] colbs;
 
-    private void Awake()
+    private void Start()
     {
-        if (!instance)
-            instance = this;
+        instance = this;
 
         foreach (ColbController controller in colbs)
         {
@@ -34,9 +33,22 @@ public class GameController : MonoBehaviour
         return true;
     }
 
+    private IEnumerator SwitchScene()
+    {
+        PivotPoint.Clear();
+        BallController.Selected = null;
+        instance = null;
+        AsyncOperation operation = SceneManager.LoadSceneAsync(nextLevel);
+
+        while (!operation.isDone)
+        {
+            Debug.LogWarning(operation.progress);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     public void ValidateLevel()
     {
-        if (Validate())
-            SceneManager.LoadScene(nextLevel);
+        if (Validate()) StartCoroutine(SwitchScene());            
     }
 }
