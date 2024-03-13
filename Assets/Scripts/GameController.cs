@@ -10,11 +10,12 @@ public class GameController : MonoBehaviour
     
     [SerializeField] private string nextLevel;
     [SerializeField] private ColbController[] colbs;
+    [SerializeField, Range(0, 100)] private int moneyAmount;
 
     private void Start()
     {
         instance = this;
-
+        
         foreach (ColbController controller in colbs)
         {
             controller.FillPivotPoints();
@@ -23,28 +24,36 @@ public class GameController : MonoBehaviour
 
     private bool Validate()
     {
+        bool result = true;
         foreach (ColbController colb in colbs)
         {
-            if (!colb.ValidateColb()) 
-                return false;
+            result &= colb.ValidateColb();
         }
 
-        Debug.LogWarning("Validaion passed!");
-        return true;
+        return result;
     }
 
     private IEnumerator SwitchScene()
     {
+        if (!PlayerPrefs.HasKey(SceneManager.GetActiveScene().name))
+        {
+            int money = (PlayerPrefs.HasKey("money")) ? PlayerPrefs.GetInt("money") : 0;
+            PlayerPrefs.SetString(SceneManager.GetActiveScene().name, "pass");
+            PlayerPrefs.SetInt("money", money + moneyAmount);
+            PlayerPrefs.Save();
+        }
+
         PivotPoint.Clear();
         BallController.Selected = null;
         instance = null;
         AsyncOperation operation = SceneManager.LoadSceneAsync(nextLevel);
-
-        while (!operation.isDone)
+        operation.allowSceneActivation = false;
+        while (operation.progress < 0.9f)
         {
-            Debug.LogWarning(operation.progress);
             yield return new WaitForEndOfFrame();
         }
+        yield return new WaitForSeconds(1f);
+        operation.allowSceneActivation = true;
     }
 
     public void ValidateLevel()

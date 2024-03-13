@@ -6,7 +6,7 @@ using UnityEngine;
 public class ColbController : MonoBehaviour
 {
     [SerializeField] private PivotPoint[] points = new PivotPoint[4];
-
+    private bool validated = false;
     public void FillPivotPoints()
     {
         foreach (PivotPoint point in points)
@@ -17,9 +17,9 @@ public class ColbController : MonoBehaviour
 
     public bool ValidateColb()
     {
+        Debug.Log($"Started validation of {gameObject.name} with {points[0].Ball}");
         if (!points[0].Ball)
             return false;
-
         int colorType = points[0].Ball.ColorID;
         foreach (PivotPoint point in points)
         {
@@ -27,6 +27,12 @@ public class ColbController : MonoBehaviour
                 return false;
         }
 
+        foreach (PivotPoint point in points)
+        {
+            point.Ball.MakeHappy();
+        }
+        Debug.Log($"Colb validated! {name}");
+        validated = true;
         return true;
     }
 
@@ -55,6 +61,7 @@ public class ColbController : MonoBehaviour
 
     public void OnMouseDown()
     {
+        if (validated) return;
         if (!GameController.Instance)
         {
             Debug.LogWarning("There's no GameController on scene!");
