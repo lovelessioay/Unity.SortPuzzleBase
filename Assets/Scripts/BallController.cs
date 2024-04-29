@@ -19,9 +19,6 @@ public class BallController : MonoBehaviour
     [SerializeField] private Sprite[] coloredSpritesHappy;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Collider2D col;
-
     public int ColorID { 
         get => colorID;
         set
@@ -36,17 +33,15 @@ public class BallController : MonoBehaviour
         spriteRenderer.sprite = coloredSpritesHappy[colorID];
     }
 
-    public PivotPoint Point { get => point; set
-        {
-            point = value;
-
-            rb.bodyType = (point == null) ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;
-            col.enabled = (point);
-        }
-    }
+    public PivotPoint Point { get => point; set => point = value; }
 
     private void OnValidate()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Awake()
+    {
+        name = $"Ball{colorID}-{FindObjectsOfType<BallController>().Length}";
     }
 }

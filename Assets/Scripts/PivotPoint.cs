@@ -7,7 +7,7 @@ public class PivotPoint : MonoBehaviour
 {
     [SerializeField] private BallController prefab;
     [SerializeField, AllowNull] private BallController ballController;
-
+    [SerializeField] private bool debugMe = false;
     private static int colbs = 0;
     private static int[] colors;
 
@@ -21,7 +21,7 @@ public class PivotPoint : MonoBehaviour
     {
         if (colbs == 0)
         {
-            colbs = FindObjectsOfType<ColbController>().Length;
+            colbs = FindObjectsOfType<ColbController>().Length - FindObjectsOfType<Cannon>().Length;
             colors = new int[colbs];
         }
         // Color ID diffusion
@@ -47,16 +47,19 @@ public class PivotPoint : MonoBehaviour
         set
         {
             ballController = value;
-            ballController.Point = this;
+
+            if (debugMe) Debug.LogWarning($"{name} - {ballController}");
+            if (ballController)
+                ballController.Point = this;
         }
     }
 
     private void Update()
     {
-        if (ballController && ballController.transform.position != transform.position)
+        if (ballController && Vector2.Distance(ballController.transform.position, transform.position) >= 0.001f)
         {
-            ballController.transform.position = Vector3.Slerp(ballController.transform.position, transform.position, Time.deltaTime * 2f);
-            //ballController.transform.position = transform.position;
+            ballController.transform.position = Vector3.Lerp(ballController.transform.position, transform.position, Time.deltaTime * 2f);
+            // ballController.transform.position = transform.position;
         }
     }
 }
