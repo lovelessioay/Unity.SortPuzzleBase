@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +18,12 @@ public class GameController : MonoBehaviour
     {
         instance = this;
         
+        if (!Cannon.Instance)
+        {
+            Debug.LogError($"Level {SceneManager.GetActiveScene().name} contains no Cannon manager object");
+            return;
+        }
+
         foreach (ColbController controller in colbs)
         {
             controller.FillPivotPoints();
@@ -46,7 +54,7 @@ public class GameController : MonoBehaviour
         PivotPoint.Clear();
         BallController.Selected = null;
         instance = null;
-        AsyncOperation operation = SceneManager.LoadSceneAsync(nextLevel);
+        UnityEngine.AsyncOperation operation = SceneManager.LoadSceneAsync(nextLevel);
         operation.allowSceneActivation = false;
         while (operation.progress < 0.9f)
         {

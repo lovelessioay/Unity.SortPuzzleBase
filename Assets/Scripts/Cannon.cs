@@ -23,7 +23,7 @@ public class Cannon : ColbController
     protected override void PutBallIn(BallController ball)
     {
         PivotPoint source = ball.Point;
-        if (source && source.transform.parent == this.transform) return;
+        if (source && source.transform.parent == this.transform) return;        // If trying to put in itself
         uint i = 0;
         while (!points[i].Ball && i < points.Length - 1) i++;
         BallController _ball = points[i++].Ball;
