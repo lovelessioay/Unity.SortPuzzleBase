@@ -37,11 +37,10 @@ public class ColbController : MonoBehaviour
         return true;
     }
 
-    protected virtual void PutBallIn(BallController ball)
+    public virtual void PutBallIn(BallController ball)
     {
-        if (Cannon.Instance.Availible || ball.Point.transform.parent == Cannon.Instance.transform)
+        if (ball.Point.transform.parent == Cannon.Instance.transform)
         {
-            // Todo
             PivotPoint source = ball.Point;
             if (source && source.transform.parent == this.transform) return;
             uint i = 0;
@@ -70,7 +69,7 @@ public class ColbController : MonoBehaviour
         GetComponent<Collider>().enabled = state;
     }
 
-    public virtual void OnMouseDown()
+    public virtual void Interact()
     {
         if (validated) return;
         if (!GameController.Instance)
@@ -78,8 +77,7 @@ public class ColbController : MonoBehaviour
             Debug.LogWarning("There's no GameController on scene!");
             return;
         }
-
-        if (BallController.Selected != null)
+        if (BallController.Selected)
         {
             PutBallIn(BallController.Selected);
             BallController.Selected = null;

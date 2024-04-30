@@ -5,38 +5,31 @@ using UnityEngine;
 
 public class Cannon : ColbController
 {
+    [SerializeField] private LayerMask m_LayerMask;
+
     private static Cannon instance;
     public static Cannon Instance { get => instance; }
 
-    public bool Availible { get => points[3].Ball == null; }
+    public bool Availible { get => points[points.Length - 1].Ball == null; }
 
     private void Awake()
     {
         instance = this;
     }
 
-    public override void FillPivotPoints()
-    {
-        return;
-    }
-
-    protected override void PutBallIn(BallController ball)
+    public override void PutBallIn(BallController ball)
     {
         PivotPoint source = ball.Point;
         if (source && source.transform.parent == this.transform) return;        // If trying to put in itself
-        uint i = 0;
-        while (!points[i].Ball && i < points.Length - 1) i++;
-        BallController _ball = points[i++].Ball;
-        points[0].Ball = ball;
+        if (points[0].Ball) return;
 
-        for (uint j = i; j < points.Length; j++)
+        BallController _ball = points[0].Ball;
+
+        if (_ball)
         {
-            BallController c = points[j].Ball;
-            points[j].Ball = _ball;
-            _ball = c;
+            ball.Point.Ball = _ball;
         }
-
-        if (source.Ball == ball) source.Ball = null;
+        points[0].Ball = ball;
     }
 
     public void UpdateStack()
@@ -51,9 +44,26 @@ public class Cannon : ColbController
         }
     }
 
-    public override void OnMouseDown()
+    public void OnMouseUp()
     {
-        if (!BallController.Selected)
-            base.OnMouseDown();
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 10f, m_LayerMask);
+        if (hit)
+        {
+            ColbController controller = hit.collider.transform.GetComponent<ColbController>();
+            if (controller)
+            {
+                Debug.Log($"Hit {controller}");
+                BallController.Selected = points[0].Ball;
+                controller.PutBallIn(points[0].Ball);
+
+                GameController.Instance.ValidateLevel();
+            }
+        }
+    }
+
+    public void OnMouseDrag()
+    {
+        float delta = Mathf.Clamp(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, -10, 10);
+        transform.position = new Vector3(delta, transform.position.y, transform.position.z);
     }
 }

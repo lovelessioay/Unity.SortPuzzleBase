@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 7221438092737890633}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7221438092737890630
 Transform:
@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5369062674ecdee468b047951667e9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: SampleScene
+  nextLevel: Assets/Scenes/Samples/Level2.unity
   colbs:
   - {fileID: 0}
   - {fileID: 0}
+  moneyAmount: 20
