@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Samples/Level5.unity
     guid: a4c36386e7f65fe4092f7712b76ee950
   - enabled: 1
+    path: Assets/Scenes/Infinite.unity
+    guid: 33ed115b4709df04ea0a06961a0baa66
+  - enabled: 1
     path: Assets/Scenes/Home/Home.unity
     guid: e925a9cce00aa68458686de2f6331873
   m_configObjects: {}
