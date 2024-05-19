@@ -13,6 +13,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private string nextLevel;
     [SerializeField] private ColbController[] colbs;
     [SerializeField, Range(0, 100)] private int moneyAmount;
+    [SerializeField] private GameObject winScreen;
+
+    public string NextLevel { get => nextLevel; }
 
     private void Start()
     {
@@ -41,7 +44,7 @@ public class GameController : MonoBehaviour
         return result;
     }
 
-    private IEnumerator SwitchScene()
+    public IEnumerator SwitchScene(string nextLevel)
     {
         if (!PlayerPrefs.HasKey(SceneManager.GetActiveScene().name))
         {
@@ -66,6 +69,7 @@ public class GameController : MonoBehaviour
 
     public void ValidateLevel()
     {
-        if (Validate()) StartCoroutine(SwitchScene());            
+        if (Validate())
+            winScreen.SetActive(true);
     }
 }

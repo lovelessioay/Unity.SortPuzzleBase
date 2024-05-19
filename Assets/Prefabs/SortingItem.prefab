@@ -99,20 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorID: 1
   point: {fileID: 0}
-  coloredSprites:
-  - {fileID: -1631994682, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: -27632076, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: 20487559, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: -1916692877, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: 1918211389, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: -1345117020, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: -678124185, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  coloredSpritesHappy:
-  - {fileID: -627640957, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: -1569124833, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: -1248409777, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: 783458836, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: -1853918356, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: -1221392221, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
-  - {fileID: -1983581711, guid: bc04b843bf79a52428fd3c669befd19b, type: 3}
+  colorTable: {fileID: 11400000, guid: 62ca3955f8edfb942bd6a5b0f654b121, type: 2}
   spriteRenderer: {fileID: 798866058531435068}
+  isPlaceHolder: 0

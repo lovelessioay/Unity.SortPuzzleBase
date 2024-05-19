@@ -8,6 +8,13 @@ public class PivotPoint : MonoBehaviour
     [SerializeField] private BallController prefab;
     [SerializeField, AllowNull] private BallController ballController;
     [SerializeField] private bool debugMe = false;
+    [SerializeField] private bool masked = false;
+    [Header("Speed settings")]
+    [SerializeField, Range(0f, 10f)] private float smoothness;
+    [SerializeField] private bool chained;
+
+    public bool Masked { get => masked; }
+
     private static int colbs = 0;
     private static int[] colors;
 
@@ -56,10 +63,13 @@ public class PivotPoint : MonoBehaviour
 
     private void Update()
     {
-        if (ballController && Vector2.Distance(ballController.transform.position, transform.position) >= 0.001f)
+        if (ballController && Vector2.Distance(ballController.transform.position, transform.position) >= 0.01f)
         {
-            ballController.transform.position = Vector3.Lerp(ballController.transform.position, transform.position, Time.deltaTime * 2f);
-            // ballController.transform.position = transform.position;
+            ballController.transform.position = Vector3.Lerp(ballController.transform.position, transform.position, Time.deltaTime * smoothness);
+        }
+        else if (ballController && chained)
+        {
+            ballController.transform.position = transform.position;
         }
     }
 }
