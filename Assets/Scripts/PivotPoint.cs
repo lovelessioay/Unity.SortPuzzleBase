@@ -16,6 +16,17 @@ public class PivotPoint : MonoBehaviour
     public bool Masked { get => masked; }
 
     private static int colbs = 0;
+
+    public static int Colbs
+    {
+        get => colbs; 
+        set
+        {
+            colbs = value;
+            colors = new int[colbs];
+        }
+    }
+
     private static int[] colors;
 
     public static void Clear()
@@ -37,12 +48,11 @@ public class PivotPoint : MonoBehaviour
         {
             randomColorId++;
             if (randomColorId >= colbs) randomColorId = 0;
-
-            // Add loop check! Or maybe not, don't give af
         }
         if (ballController == null)
         {
             Ball = Instantiate(prefab, transform.position, Quaternion.identity);
+            Ball.Hide = Masked;
         }
         ballController.ColorID = randomColorId;
         colors[randomColorId]++;

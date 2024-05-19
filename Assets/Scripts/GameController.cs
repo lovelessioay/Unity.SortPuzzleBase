@@ -11,13 +11,18 @@ public class GameController : MonoBehaviour
     public static GameController Instance { get => instance; }
     
     [SerializeField] private string nextLevel;
-    [SerializeField] private ColbController[] colbs;
+    [SerializeField] private List<ColbController> colbs;
     [SerializeField, Range(0, 100)] private int moneyAmount;
     [SerializeField] private GameObject winScreen;
 
+    public void AddColbController(ColbController colbController)
+    {
+        colbs.Add(colbController);
+    }
+
     public string NextLevel { get => nextLevel; }
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
         
