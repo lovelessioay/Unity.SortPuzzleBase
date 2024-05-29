@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HomeMgr : MonoBehaviour, ISingleton
 {
@@ -38,5 +39,10 @@ public class HomeMgr : MonoBehaviour, ISingleton
             PlayerPrefs.Save();
         }
         instance = null;
+    }
+
+    public void ChangeLevel(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }
