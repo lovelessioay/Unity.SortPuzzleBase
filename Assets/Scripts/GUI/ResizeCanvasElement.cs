@@ -13,7 +13,5 @@ public class ResizeCanvasElement : MonoBehaviour
     {
         float resize = self.rect.width / initialResolution.x * initialResolution.y; 
         self.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, resize);
-
-        Debug.Log("Call");
     }
 }
