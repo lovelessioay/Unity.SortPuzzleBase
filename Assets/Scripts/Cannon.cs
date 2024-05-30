@@ -52,6 +52,9 @@ public class Cannon : ColbController
             ColbController controller = hit.collider.transform.GetComponent<ColbController>();
             if (controller)
             {
+                if (controller.ValidateColb())
+                    return;
+
                 Debug.Log($"Hit {controller}");
                 BallController.Selected = points[0].Ball;
                 controller.PutBallIn(points[0].Ball);

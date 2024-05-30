@@ -17,13 +17,15 @@ MonoBehaviour:
   description: Basic Level with all required components set up.
   preview: {fileID: 5205613234675756250}
   dependencies:
+  - dependency: {fileID: 580629468561767578, guid: f13b32638fe5a914ea93e0a62cc20906, type: 3}
+    instantiationMode: 0
   - dependency: {fileID: 7221438092737890632, guid: bb3a1d361bcba464ba231155d3ae0e16, type: 3}
     instantiationMode: 0
   - dependency: {fileID: 2800000, guid: 4375e9aad4fc3bf4097b87effc1dbafd, type: 3}
     instantiationMode: 0
-  - dependency: {fileID: 2800000, guid: 0ca9d882aafa4084dbde99fef3930943, type: 3}
-    instantiationMode: 0
   - dependency: {fileID: 2800000, guid: 6f8b4bde930189a4aac91effc88e6734, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: 0ca9d882aafa4084dbde99fef3930943, type: 3}
     instantiationMode: 0
   - dependency: {fileID: 2800000, guid: 2fd6421f253b4ef1a19526541f9ffc0c, type: 3}
     instantiationMode: 1
@@ -53,14 +55,16 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: c030c32e0e2a7804897dcf890f1e749a, type: 3}
     instantiationMode: 0
+  - dependency: {fileID: 7142349979440259433, guid: ec5c89dd6eb2f7b4d8dcae5e3cde5a15, type: 3}
+    instantiationMode: 0
   - dependency: {fileID: 798866058531435042, guid: 72d19f30d237914468f90a0ee687b26b, type: 3}
     instantiationMode: 0
   - dependency: {fileID: 3633924522445625998, guid: 3027d8251f93c72459ff3e55ca740d58, type: 3}
     instantiationMode: 0
-  - dependency: {fileID: 11400000, guid: 62ca3955f8edfb942bd6a5b0f654b121, type: 2}
-    instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 140bfb3bfa22f1b45b5942d4c93bd6a4, type: 3}
     instantiationMode: 0
+  - dependency: {fileID: 11400000, guid: 62ca3955f8edfb942bd6a5b0f654b121, type: 2}
+    instantiationMode: 1
   - dependency: {fileID: 3056094946463120033, guid: 3d68ca7ca0924ed40a4976377c157429, type: 3}
     instantiationMode: 0
   - dependency: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -72,6 +76,8 @@ MonoBehaviour:
   - dependency: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 3cbbeb590b1594948a086aba78c241fa, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: 7a2d15b835491db48937c9365ba6b39d, type: 3}
     instantiationMode: 0
   templatePipeline: {fileID: 0}
   badge: {fileID: 0}

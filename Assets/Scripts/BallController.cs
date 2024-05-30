@@ -69,4 +69,9 @@ public class BallController : MonoBehaviour
     {
         name = $"Ball{colorID}-{FindObjectsOfType<BallController>().Length}";
     }
+
+    private void Start()
+    {
+        spriteRenderer.sprite = (isHidden) ? colorTable.hidden : getSprite(colorID);
+    }
 }

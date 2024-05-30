@@ -14,7 +14,7 @@ public class InfiniteGameController : MonoBehaviour
     {
         int colbsCount = Random.Range(0, colbsMaxCount - 1) + 2;
         PivotPoint.Colbs = colbsCount;
-        Transform[] colbsCountList = (colbsCount % 2 != 0) ? colbPivot1 : colbPivot2;
+        Transform[] colbsCountList = (colbsCount % 2 != 0) ? colbPivot2 : colbPivot1;
 
         int startPosition = colbsCount / 2 - ((colbsCount % 2 == 0) ? 0 : 1);
         Debug.Log(colbsCount);

@@ -52,6 +52,7 @@ public class PivotPoint : MonoBehaviour
         if (ballController == null)
         {
             Ball = Instantiate(prefab, transform.position, Quaternion.identity);
+            Ball.Point = this;
             Ball.Hide = Masked;
         }
         ballController.ColorID = randomColorId;

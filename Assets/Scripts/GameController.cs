@@ -25,7 +25,10 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        
+    }
+
+    private void Start()
+    {        
         if (!Cannon.Instance)
         {
             Debug.LogError($"Level {SceneManager.GetActiveScene().name} contains no Cannon manager object");
