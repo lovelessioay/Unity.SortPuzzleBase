@@ -8,7 +8,7 @@ public class WinScreenController : MonoBehaviour
 
     [SerializeField] private string mainMenu;
 
-    private void Awake()
+    private void Start()
     {
         gameController = GameController.Instance;
     }

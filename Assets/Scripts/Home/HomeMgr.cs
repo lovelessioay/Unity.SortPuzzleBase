@@ -20,7 +20,7 @@ public class HomeMgr : MonoBehaviour, ISingleton
         set
         {
             money = value;
-            moneyLabel.text = $"${money}";
+            moneyLabel.text = $"{money}";
         }
     }
 

@@ -28,7 +28,7 @@ public class HomeItemController : MonoBehaviour
 
         spriteRenderer.enabled = item.Unlocked;
         canvas.enabled = !item.Unlocked && HomeMgr.Instance.Money >= item.Cost;
-        label.text = $"${item.Cost}";
+        label.text = $"{item.Cost}";
     }
 
     public void Buy()

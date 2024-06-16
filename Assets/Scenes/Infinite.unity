@@ -396,7 +396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -434,6 +433,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1086694356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5276633507819676663, guid: 3d68ca7ca0924ed40a4976377c157429, type: 3}
+  m_PrefabInstance: {fileID: 1920385946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1096197504
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +670,7 @@ PrefabInstance:
     - target: {fileID: 7221438092737890633, guid: bb3a1d361bcba464ba231155d3ae0e16, type: 3}
       propertyPath: winScreen
       value: 
-      objectReference: {fileID: 1920385947}
+      objectReference: {fileID: 1086694356}
     - target: {fileID: 7221438092737890633, guid: bb3a1d361bcba464ba231155d3ae0e16, type: 3}
       propertyPath: moneyAmount
       value: 1
@@ -981,11 +985,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d68ca7ca0924ed40a4976377c157429, type: 3}
---- !u!1 &1920385947 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3056094946463120033, guid: 3d68ca7ca0924ed40a4976377c157429, type: 3}
-  m_PrefabInstance: {fileID: 1920385946}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2078557270
 PrefabInstance:
   m_ObjectHideFlags: 0
